@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>API2</title>
+<style>
+button {background-color: #04AA6D;} /* Green */
+</style>
+</head>
+
+<body style="background-color: rgb(121, 164, 166);">
+
+<h1 style=text-align:center margin-top:40px;>Welcome to Weather App <span id="cityName"></span> </h1>
+	
+		<form>
+		<div style="text-align: center;align-items: center;padding-left:460px;padding-top: 100px;">
+        <div class="a" style="background-color: rgb(139, 121, 166);height: 300px; width: 349px; border: 5px solid black; text-align: center;align-items: center; padding-top:70px"> 
+		
+		<label><h2>Enter the City name</h2></label>
+		<br>
+		<input type="text" id="city" style="border:solid black 2px" />
+		<button value="submit" id="submit">Get Weather</button>
+		</form>
+	
+		<p>Temp is </p>
+		<p id="temp"></p>
+		</div></div>
+
+<script>
+
+  
+const options = {
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '44003a6195mshab6cd602d27515ep19a87ejsn997395984416',
+		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
+	}
+};
+
+  const weatherapp = (city) => {
+         fetch("https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city="+city,options)
+		 .then(response => response.json())
+		 .then(data => {console.log(data)
+		 
+		    temp.innerHTML = data.temp
+			})
+			
+			}
+			submit.addEventListener("click",(e) =>{
+			e.preventDefault()
+			weatherapp(city.value)
+			})
+			
+			weatherapp("Pune")
+			
+			</script>
+
+
+</body>
+</html>
